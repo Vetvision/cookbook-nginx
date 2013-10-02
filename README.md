@@ -57,52 +57,51 @@ config file.
 * `node['nginx']['user']` - User that Nginx will run as.
 * `node['nginx']['group]` - Group for Nginx.
 * `node['nginx']['binary']` - Path to the Nginx binary.
-* `node['nginx']['init_style']` - How to run Nginx as a service when
-  using `nginx::source`. Values can be "runit", "upstart", "init" or
-  "bluepill".  When using runit or bluepill, those recipes will be
-  included as well and are dependencies of this cookbook.  Recipes
-  are not included for upstart, it is assumed that upstart is built
-  into the platform you are using (ubuntu or el6).  This attribute is
-  not used in the `nginx` recipe because the package manager's init
-  script style for the platform is assumed.  Upstart is never set as
-  a default as this represents a change in behavior, if you are running
-  ubuntu or el6 and want to use upstart, please set this attribute in
-  a role or similar.
-* `node['nginx']['upstart']['foreground']` - Set this to true if you
-  want upstart to run nginx in the foreground, set to false if you
-  want upstart to detach and track the process via pid.
-* `node['nginx']['upstart']['runlevels']` - String of runlevels in the
-  format '2345' which determines which runlevels nginx will start at
-  when entering and stop at when leaving.
-* `node['nginx']['upstart']['respawn_limit']` - Respawn limit in upstart
-  stanza format, count followed by space followed by interval in seconds.
+* `node['nginx']['init_style']` - How to run Nginx as a service when using
+  `nginx::source`. Values can be "runit", "upstart", "init" or "bluepill".
+  When using runit or bluepill, those recipes will be included as well and are
+  dependencies of this cookbook.  Recipes are not included for upstart, it is
+  assumed that upstart is built into the platform you are using (ubuntu or
+  el6).  This attribute is not used in the `nginx` recipe because the package
+  manager's init script style for the platform is assumed.  Upstart is never
+  set as a default as this represents a change in behavior, if you are running
+  ubuntu or el6 and want to use upstart, please set this attribute in a role or
+  similar.
+* `node['nginx']['upstart']['foreground']` - Set this to true if you want
+  upstart to run nginx in the foreground, set to false if you want upstart to
+  detach and track the process via pid.
+* `node['nginx']['upstart']['runlevels']` - String of runlevels in the format
+  '2345' which determines which runlevels nginx will start at when entering and
+  stop at when leaving.
+* `node['nginx']['upstart']['respawn_limit']` - Respawn limit in upstart stanza
+  format, count followed by space followed by interval in seconds.
 * `node['nginx']['pid']` - Location of the PID file.
-* `node['nginx']['keepalive']` - Whether to use `keepalive_timeout`,
-  any value besides "on" will leave that option out of the config.
+* `node['nginx']['keepalive']` - Whether to use `keepalive_timeout`, any value
+  besides "on" will leave that option out of the config.
 * `node['nginx']['keepalive_timeout']` - used for config value of
   `keepalive_timeout`.
 * `node['nginx']['worker_processes']` - used for config value of
   `worker_processes`.
-* `node['nginx']['worker_connections']` - used for config value of
-  `events { worker_connections }`
+* `node['nginx']['worker_connections']` - used for config value of `events {
+  worker_connections }`
 * `node['nginx']['worker_rlimit_nofile']` - used for config value of
-  `worker_rlimit_nofile`. Can replace any "ulimit -n" command. The
-  value depend on your usage (cache or not) but must always be
-  superior than worker_connections.
+  `worker_rlimit_nofile`. Can replace any "ulimit -n" command. The value depend
+  on your usage (cache or not) but must always be superior than
+  worker_connections.
 * `node['nginx']['multi_accept']` - used for config value of `events {
-  multi_accept }`. Try to accept() as many connections as possible.
-  Disable by default.
-* `node['nginx']['event']` - used for config value of `events { use
-  }`. Set the event-model. By default nginx looks for the most
-  suitable method for your OS.
-* `node['nginx']['server_tokens']` - used for config value of
-  `server_tokens`.
-* `node['nginx']['server_names_hash_bucket_size']` - used for config
-  value of `server_names_hash_bucket_size`.
-* `node['nginx']['disable_access_log']` - set to true to disable the
-  general access log, may be useful on high traffic sites.
+  multi_accept }`. Try to accept() as many connections as possible.  Disable by
+  default.
+* `node['nginx']['event']` - used for config value of `events { use }`. Set the
+  event-model. By default nginx looks for the most suitable method for your OS.
+* `node['nginx']['server_tokens']` - used for config value of `server_tokens`.
+* `node['nginx']['server_names_hash_bucket_size']` - used for config value of
+  `server_names_hash_bucket_size`.
+* `node['nginx']['disable_access_log']` - set to true to disable the general
+  access log, may be useful on high traffic sites.
 * `node['nginx']['access_log_options']` - Set to a string of additional options
   to be appended to the access log directive
+* `node['nginx']['access_log_formats']` - Hash with log format names as keys and their
+  definitions as values, for use with `access_log_options`.
 * `node['nginx']['error_log_options']` - Set to a string of additional options
   to be appended to the error log directive
 * `node['nginx']['default_site_enabled']` - enable the default site
